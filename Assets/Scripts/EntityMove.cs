@@ -17,10 +17,12 @@ public class EntityMove : MonoBehaviour
     [SerializeField] float goalAdjustment_e;
 
     [HideInInspector] public List<Collider2D> nearColliders = new List<Collider2D>();
-    public GameObject Core;
+    [HideInInspector] public EnemyCore Core;
+
     Collider2D selfCol;
     Rigidbody2D selfRb;
-    EntityModel entityModel;
+    [HideInInspector] EntityModel entityModel;
+    public ReactiveProperty<EntityState> CurState = new ReactiveProperty<EntityState>(EntityState.Normal);
     [SerializeField] float maxDistance;
     SpriteRenderer selfSp;
     public EntityState state;
@@ -43,6 +45,12 @@ public class EntityMove : MonoBehaviour
         selfSp = this.GetComponent<SpriteRenderer>();
         entityModel = this.GetComponent<EntityModel>();
         propBlock = new MaterialPropertyBlock();
+        CurState.Where(s => s == EntityState.Hanged)
+        .Subscribe(_ =>
+        {
+            selfRb.linearVelocity = Vector2.zero;
+        });
+        Debug.Log("生成");
     }
     public void Set()
     {
@@ -82,22 +90,35 @@ public class EntityMove : MonoBehaviour
 
     void FixedUpdate()
     {
-        velocity = Vector2.zero;
-        velocity += SeparationForce(nearColliders, separationAdjustment);
-        velocity += GoalForce(Core, goalAdjustment_c, goalAdjustment_k, goalAdjustment_e);
-        selfRb.AddForce(velocity);
-        selfRb.linearVelocity += new Vector2(Random.Range(-randomness, randomness), Random.Range(-randomness, randomness));
-        if (selfRb.linearVelocity.magnitude > maxSpeed)
+        switch (state)
         {
-            selfRb.linearVelocity = selfRb.linearVelocity.normalized * maxSpeed;
+            case EntityState.Normal:
+                velocity = Vector2.zero;
+                velocity += SeparationForce(nearColliders, separationAdjustment);
+                Debug.Log("Sep:"+SeparationForce(nearColliders, separationAdjustment));
+                velocity += GoalForce(Core.gameObject, goalAdjustment_c, goalAdjustment_k, goalAdjustment_e);
+                Debug.Log("Goal:"+GoalForce(Core.gameObject, goalAdjustment_c, goalAdjustment_k, goalAdjustment_e));
+                selfRb.AddForce(velocity);
+                selfRb.linearVelocity += new Vector2(Random.Range(-randomness, randomness), Random.Range(-randomness, randomness));
+                if (selfRb.linearVelocity.magnitude > maxSpeed)
+                {
+                    selfRb.linearVelocity = selfRb.linearVelocity.normalized * maxSpeed;
+                }
+                break;
+            case EntityState.Hanged:
+                this.transform.SetParent(Core.transform);
+                if ((this.transform.position - Core.transform.position).magnitude > maxDistance)
+                {
+                    Core.IsMaxHanged.Value = true;
+                }
+                break;
         }
+
     }
 
     void Update()
     {
-        ChangeColor(targetColor, 1 - entityModel.Hp / entityModel.MaxHp, selfSp);
-
-        if ((this.transform.position - Core.transform.position).magnitude > maxDistance)
+        if (entityModel.Hp <= 0)
         {
             onDeath.OnNext(Unit.Default);
             Destroy(this.gameObject);
@@ -107,9 +128,14 @@ public class EntityMove : MonoBehaviour
     {
         Color currentColor = Color.Lerp(new Color(0, 0, 0, 1), target, ratio);
         currentColor = new Color(currentColor.r, currentColor.g, currentColor.b, 1);
-        
+
         sp.GetPropertyBlock(propBlock);
         propBlock.SetColor("_AdditiveColor", currentColor);
         sp.SetPropertyBlock(propBlock);
+    }
+
+    void OnDestroy()
+    {
+        Debug.Log("消滅");        
     }
 }

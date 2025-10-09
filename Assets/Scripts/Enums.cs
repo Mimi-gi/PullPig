@@ -7,8 +7,8 @@ public enum ItemKind
 
 public enum EntityState
 {
-    Hanged,
-    Normal
+    Normal,
+    Hanged
 }
 public enum GameMode
 {

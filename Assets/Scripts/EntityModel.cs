@@ -20,4 +20,14 @@ public class EntityModel : MonoBehaviour
         }
     }
     float hp;
+
+    void Awake()
+    {
+        Hp = MaxHp;
+    }
+
+    void OnTriggerEnter2D()
+    {
+        
+    }
 }

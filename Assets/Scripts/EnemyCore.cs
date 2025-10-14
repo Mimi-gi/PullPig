@@ -15,8 +15,6 @@ public class EnemyCore : MonoBehaviour
     List<Collider2D> activeEnitites = new List<Collider2D>();
     Subject<Unit> onAllDeath = new Subject<Unit>();
     public Observable<Unit> OnAllDeath => onAllDeath;
-    public ReactiveProperty<bool> IsMaxHanged = new ReactiveProperty<bool>();
-    EnemyCoreMove ecm;
 
     [Header("アイテムの設定")]
 
@@ -30,8 +28,8 @@ public class EnemyCore : MonoBehaviour
     [Header("エフェクト関連")]
     [SerializeField] VisualEffectAsset toujou;
     public CancellationTokenSource cts = new CancellationTokenSource();
-    [Header("鎖")]
-    [SerializeField] ChainSO chainSO;
+    [Header("鎖の設定")]
+    [SerializeField] GameObject chainPrefab;
     void Start()
     {
         OnAllDeath.Subscribe(_ =>
@@ -50,7 +48,6 @@ public class EnemyCore : MonoBehaviour
         });
         CreateItemList();
         var fx = this.gameObject.AddComponent<VisualEffect>();
-        ecm = this.GetComponent<EnemyCoreMove>();
         fx.visualEffectAsset = toujou;
     }
 
@@ -63,7 +60,8 @@ public class EnemyCore : MonoBehaviour
             var obj = Instantiate(ePrefab, pos + this.transform.position, Quaternion.identity);
             var col = obj.GetComponent<Collider2D>();
             var move = obj.GetComponent<EntityMove>();
-            var chain = obj.AddComponent<Chain>();
+            var chainObj = Instantiate(chainPrefab, this.transform);
+            var chain = chainObj.GetComponent<CoreEntityChain>();
             activeEnitites.Add(col);
             move.Core = this;
             move.nearColliders = activeEnitites;
@@ -87,7 +85,7 @@ public class EnemyCore : MonoBehaviour
             {
                 //手から離れた処理
             });
-            //chain.Create(this.gameObject,obj, maxr,chainSO);
+            chain.Set(move.GetComponent<EntityModel>(), this);
         }
     }
 

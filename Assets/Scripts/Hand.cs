@@ -36,7 +36,7 @@ public class Hand : MonoBehaviour
             }
         });
 
-        model.Attack.Subscribe(a =>
+        PlayerModel.Attack.Subscribe(a =>
         {
             AtPow = a * 8.0f;
             this.transform.localScale += new Vector3(a * 0.001f, a * 0.001f, 0);

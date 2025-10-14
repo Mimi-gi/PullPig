@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f601e355b2104446b9e95f35c8a6d82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityModel
-  MaxHp: 10
+  MaxHp: 3
 --- !u!114 &7936378534108486497
 MonoBehaviour:
   m_ObjectHideFlags: 0

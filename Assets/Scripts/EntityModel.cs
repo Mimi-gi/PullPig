@@ -1,7 +1,10 @@
 using UnityEngine;
+using R3;
 
 public class EntityModel : MonoBehaviour
 {
+    Subject<Unit> onDeath = new Subject<Unit>();
+    public Observable<Unit> OnDeath => onDeath;
     public float MaxHp;
     [HideInInspector]
     public float Hp

@@ -106,11 +106,6 @@ public class EntityMove : MonoBehaviour
                 }
                 break;
             case EntityState.Hanged:
-                this.transform.SetParent(Core.transform);
-                if ((this.transform.position - Core.transform.position).magnitude > maxDistance)
-                {
-                    Core.IsMaxHanged.Value = true;
-                }
                 break;
         }
 

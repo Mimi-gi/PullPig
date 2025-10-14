@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -256,6 +257,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf3138ffcc80d854ea3614950ae1c868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CamePos
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,7 +418,7 @@ MonoBehaviour:
   itemWeights: []
   itemNum: 0
   toujou: {fileID: 0}
-  chainSO: {fileID: 11400000, guid: 22211121f7afd3c448b2bd77fa3c83cc, type: 2}
+  chainPrefab: {fileID: 1783732346967910437, guid: f6f4fac009b2f4643b34669e31faee4e, type: 3}
 --- !u!212 &642009095
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -516,6 +529,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1095377270}
+  - component: {fileID: 1095377271}
   m_Layer: 0
   m_Name: Hand
   m_TagString: Untagged
@@ -538,6 +552,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1095377271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095377269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ca58b5d246881847b206f45e459cc8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Hand
+  model: {fileID: 1933115919}
+  AtPow: 0
+  sprites:
+  - {fileID: 1658994273369289263, guid: 3185a2e0a74cd1049b7621d111cdcb78, type: 3}
+  - {fileID: -214371733502108862, guid: 3185a2e0a74cd1049b7621d111cdcb78, type: 3}
 --- !u!1 &1895868532
 GameObject:
   m_ObjectHideFlags: 0

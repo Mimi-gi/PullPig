@@ -63,18 +63,7 @@ public class EnemyCoreMove : MonoBehaviour
     void Start()
     {
         Core = this.GetComponent<EnemyCore>();
-        Core.IsMaxHanged
-        .Where(v => v)
-        .Subscribe(_ =>
-        {
-            //導入処理
-        });
-        Core.IsMaxHanged
-        .Where(v => !v)
-        .Subscribe(_ =>
-        {
-            //終了処理
-        });
+
         cycleTime += Random.Range(-0.1f, 0.1f);
     }
 
@@ -88,14 +77,9 @@ public class EnemyCoreMove : MonoBehaviour
 
     protected virtual void Move()
     {
-        if (Core.IsMaxHanged.Value)
-        {
-            TryFlee();
-        }
-        else
-        {
-            MoveControll();
-        }
+
+        MoveControll();
+
         this.transform.position += v * Time.deltaTime;
     }
 
@@ -145,8 +129,7 @@ public class EnemyCoreMove : MonoBehaviour
 
     void TryFlee()
     {
-        var dis = (Center(activeMoves) - this.transform.position.Cast()).magnitude;
-        v = ((dis - max) * scale) * (Center(activeMoves) - this.transform.position.Cast()).normalized;
+        //つかまれているとき
     }
 
     Vector2 Center(List<EntityMove> list)
@@ -158,7 +141,7 @@ public class EnemyCoreMove : MonoBehaviour
         Vector2 center = Vector2.zero;
         foreach (var ele in list)
         {
-            center += ele.transform.position.Cast();
+            center += ele.transform.position.CastTo2();
         }
         return center / list.Count;
     }

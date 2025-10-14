@@ -23,18 +23,5 @@ namespace ListExtensions
                 return false;
             }
         }
-
-        public static bool TryAdd<T>(this List<T> list,T element)
-        {
-            if (list.Contains(element))
-            {
-                return false;
-            }
-            else
-            {
-                list.Add(element);
-                return true;
-            }
-        }
     }
 }

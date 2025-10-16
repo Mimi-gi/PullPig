@@ -37,7 +37,7 @@ public class RectRegion
 }
 public class EnemyCoreMove : MonoBehaviour
 {
-    public Transform player;
+    [HideInInspector]public Transform player;
     public EnemyCore Core;
     bool pulledFlag;
 

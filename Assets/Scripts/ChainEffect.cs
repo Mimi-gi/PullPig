@@ -28,7 +28,6 @@ public class ChainEffect : MonoBehaviour
         var vfx = obj.GetComponent<VisualEffect>();
         vfx.SetFloat("Length", chain.length);
         vfx.Play();
-        Destroy(obj, 2f);
     }
 
 }

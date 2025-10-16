@@ -230,7 +230,7 @@ MonoBehaviour:
   itemPrefabs: []
   itemWeights: []
   itemNum: 0
-  toujou: {fileID: 0}
+  toujou: {fileID: 7108802156474506118, guid: c6beb1da892352c41a4d8eb0f13287db, type: 3}
   chainPrefab: {fileID: 1783732346967910437, guid: f6f4fac009b2f4643b34669e31faee4e, type: 3}
 --- !u!114 &6411033383326724449
 MonoBehaviour:

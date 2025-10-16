@@ -4,6 +4,7 @@ using R3;
 using UnityEngine.VFX;
 using System.Threading;
 using ListExtensions;
+using UnityEditor.Tilemaps;
 
 public class EnemyCore : MonoBehaviour
 {
@@ -26,8 +27,7 @@ public class EnemyCore : MonoBehaviour
     List<(GameObject, float)> itemPossibility; //Agentがもちうるアイテムとその比重
 
     [Header("エフェクト関連")]
-    [SerializeField] VisualEffectAsset toujou;
-    public CancellationTokenSource cts = new CancellationTokenSource();
+    [SerializeField] GameObject toujou;
     [Header("鎖の設定")]
     [SerializeField] GameObject chainPrefab;
     void Start()
@@ -47,8 +47,7 @@ public class EnemyCore : MonoBehaviour
             Death();
         });
         CreateItemList();
-        var fx = this.gameObject.AddComponent<VisualEffect>();
-        fx.visualEffectAsset = toujou;
+        Instantiate(toujou, this.transform.position, Quaternion.identity).GetComponent<VisualEffect>().Play();
     }
 
     public virtual void CreateAgent()

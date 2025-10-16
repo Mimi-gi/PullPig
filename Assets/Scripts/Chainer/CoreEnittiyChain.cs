@@ -34,7 +34,7 @@ public class CoreEntityChain : MonoBehaviour
         var del = core.transform.position - EntityModel.gameObject.transform.position;
         if (del.magnitude > core.maxr * 1.4f)
         {
-            entityRb.AddForce(VectorExtension.Pow(del.normalized * (del.magnitude - core.maxr*1.4f), 1.7f));
+            entityRb.AddForce(VectorExtension.Pow(del.normalized * (del.magnitude - core.maxr*1.4f), 1.5f));
         }
         if(del.magnitude > core.maxr)
         {

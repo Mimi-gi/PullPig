@@ -9,6 +9,7 @@ public class ScoreModel : MonoBehaviour
     {
         if (INSTANCE == null) INSTANCE = this;
         else Destroy(this.gameObject);
+        Score = new ReactiveProperty<int>(0);
     }
 
 }

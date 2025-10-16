@@ -13,4 +13,11 @@ public class PlayerModel : MonoBehaviour
     Observable<(ItemKind, float)> onGetItem;
     Observable<float> onDamage; //他からインスタンスを代入される。
 
+    void Awake()
+    {
+        attack.Value = 1.0f;
+        stamina.Value = 1.0f;
+        time.Value = 1.0f;
+    }
+
 }

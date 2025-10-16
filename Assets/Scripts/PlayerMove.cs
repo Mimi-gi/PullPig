@@ -12,14 +12,17 @@ public class PlayerMove : MonoBehaviour
 
     [HideInInspector] public bool isDash;
 
+    Rigidbody2D rb;
+
 
     void Start()
     {
         Speed = speed;
+        rb = GetComponent<Rigidbody2D>();
 
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Move();
         Look();
@@ -29,13 +32,17 @@ public class PlayerMove : MonoBehaviour
     {
         if (isDash)
         {
-            this.transform.position += new Vector3(moveInput.x, moveInput.y, 0f) * Speed * 2.5f * Time.deltaTime;
+            rb.AddForce((Speed - rb.linearVelocity.magnitude * 0.5f) * 100 * moveInput);
         }
         else
         {
-            this.transform.position += new Vector3(moveInput.x, moveInput.y, 0f) * Speed * Time.deltaTime;
+            rb.AddForce((Speed - rb.linearVelocity.magnitude) * 50 * moveInput);
         }
+    }
 
+    public void ReceiveForce(Rigidbody2D rb)
+    {
+        rb.AddForce((Speed - rb.linearVelocity.magnitude) * 50 * moveInput);
     }
 
     void Look()

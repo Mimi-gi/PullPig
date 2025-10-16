@@ -24,13 +24,22 @@ public class EntityModel : MonoBehaviour
     }
     float hp;
 
+    ReactiveProperty<float> HP = new ReactiveProperty<float>(1);
+
     void Awake()
     {
         Hp = MaxHp;
+        HP.Value = Hp;
     }
 
-    void OnTriggerEnter2D()
+    void Update()
     {
-        
+        if(Hp <= 0)
+        {
+            onDeath.OnNext(Unit.Default);
+            Debug.Log("死亡");
+            Destroy(this.gameObject);
+        }
     }
+    
 }

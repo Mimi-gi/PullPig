@@ -27,9 +27,6 @@ public class EntityMove : MonoBehaviour
     SpriteRenderer selfSp;
     public EntityState state;
 
-    protected Subject<Unit> onDeath = new Subject<Unit>();
-    public Observable<Unit> OnDeath => onDeath;
-
     protected Subject<Unit> onHanged = new Subject<Unit>();
     public Observable<Unit> OnHanged => onHanged;
 
@@ -95,9 +92,9 @@ public class EntityMove : MonoBehaviour
             case EntityState.Normal:
                 velocity = Vector2.zero;
                 velocity += SeparationForce(nearColliders, separationAdjustment);
-                Debug.Log("Sep:"+SeparationForce(nearColliders, separationAdjustment));
+                //Debug.Log("Sep:"+SeparationForce(nearColliders, separationAdjustment));
                 velocity += GoalForce(Core.gameObject, goalAdjustment_c, goalAdjustment_k, goalAdjustment_e);
-                Debug.Log("Goal:"+GoalForce(Core.gameObject, goalAdjustment_c, goalAdjustment_k, goalAdjustment_e));
+                //Debug.Log("Goal:"+GoalForce(Core.gameObject, goalAdjustment_c, goalAdjustment_k, goalAdjustment_e));
                 selfRb.AddForce(velocity);
                 selfRb.linearVelocity += new Vector2(Random.Range(-randomness, randomness), Random.Range(-randomness, randomness));
                 if (selfRb.linearVelocity.magnitude > maxSpeed)
@@ -111,26 +108,5 @@ public class EntityMove : MonoBehaviour
 
     }
 
-    void Update()
-    {
-        if (entityModel.Hp <= 0)
-        {
-            onDeath.OnNext(Unit.Default);
-            Destroy(this.gameObject);
-        }
-    }
-    void ChangeColor(Color target, float ratio, SpriteRenderer sp)
-    {
-        Color currentColor = Color.Lerp(new Color(0, 0, 0, 1), target, ratio);
-        currentColor = new Color(currentColor.r, currentColor.g, currentColor.b, 1);
 
-        sp.GetPropertyBlock(propBlock);
-        propBlock.SetColor("_AdditiveColor", currentColor);
-        sp.SetPropertyBlock(propBlock);
-    }
-
-    void OnDestroy()
-    {
-        Debug.Log("消滅");        
-    }
 }

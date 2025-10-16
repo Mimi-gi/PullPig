@@ -43,8 +43,8 @@ public class EnemyCore : MonoBehaviour
         .Subscribe(_ =>
         {
             onAllDeath.OnNext(Unit.Default);
-            //!ScoreModel.INSTANCE.Score.Value += score;
-            //Destroy(this.gameObject);
+            ScoreModel.INSTANCE.Score.Value += score;
+            Death();
         });
         CreateItemList();
         var fx = this.gameObject.AddComponent<VisualEffect>();
@@ -62,28 +62,15 @@ public class EnemyCore : MonoBehaviour
             var move = obj.GetComponent<EntityMove>();
             var chainObj = Instantiate(chainPrefab, this.transform);
             var chain = chainObj.GetComponent<CoreEntityChain>();
+            var model = obj.GetComponent<EntityModel>();
             activeEnitites.Add(col);
             move.Core = this;
             move.nearColliders = activeEnitites;
-            move.OnDeath
+            model.OnDeath
             .Subscribe(_ =>
             {
                 eNum.Value--;
                 activeEnitites.TryRemove(col);
-            });
-
-            move.CurState
-            .Where(_ => _ == EntityState.Hanged)
-            .Subscribe(_ =>
-            {
-                //つかまれているときの処理
-            });
-
-            move.CurState
-            .Where(_ => _ == EntityState.Normal)
-            .Subscribe(_ =>
-            {
-                //手から離れた処理
             });
             chain.Set(move.GetComponent<EntityModel>(), this);
         }
@@ -149,4 +136,8 @@ public class EnemyCore : MonoBehaviour
         }
     }
 
+    void Death()
+    {
+        Destroy(this.gameObject);
+    }
 }

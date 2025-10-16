@@ -63,7 +63,7 @@ public class EnemyCoreMove : MonoBehaviour
     void Start()
     {
         Core = this.GetComponent<EnemyCore>();
-
+        player = GameObject.FindObjectsByType<PlayerModel>(FindObjectsSortMode.None)[0].transform;
         cycleTime += Random.Range(-0.1f, 0.1f);
     }
 

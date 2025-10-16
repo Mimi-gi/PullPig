@@ -6,9 +6,10 @@ using Unity.IntegerTime;
 public class CoreEntityChain : MonoBehaviour
 {
     SpriteRenderer sr;
-    EntityModel entityModel;
+    public EntityModel EntityModel{get; private set;}
     Rigidbody2D entityRb;
     EnemyCore core;
+    [HideInInspector]public float length;
 
     [Header("鎖の色")]
     [SerializeField] Color chainColor = Color.yellow;
@@ -18,32 +19,39 @@ public class CoreEntityChain : MonoBehaviour
     {
         sr = this.GetComponent<SpriteRenderer>();
         mpb = new MaterialPropertyBlock();
-        entityModel = em;
+        EntityModel = em;
         core = ec;
-        entityRb = entityModel.GetComponent<Rigidbody2D>();
+        entityRb = EntityModel.GetComponent<Rigidbody2D>();
+        em.OnDeath
+        .Subscribe(_ =>
+        {
+            Destroy(this.gameObject);
+        });
     }
 
     void Force()
     {
-        var del = core.transform.position - this.transform.position;
-        if (del.magnitude > core.maxr)
+        var del = core.transform.position - EntityModel.gameObject.transform.position;
+        if (del.magnitude > core.maxr * 1.4f)
         {
-            entityRb.AddForce(VectorExtension.Pow(del.normalized * (del.magnitude - core.maxr), 2f));
+            entityRb.AddForce(VectorExtension.Pow(del.normalized * (del.magnitude - core.maxr*1.4f), 1.7f));
+        }
+        if(del.magnitude > core.maxr)
+        {
             Damage();
         }
     }
 
     void Sprite()
     {
-        Debug.Log("鎖");
-        this.transform.rotation = Quaternion.FromToRotation(Vector3.right, -core.transform.position + entityModel.transform.position);
-        sr.size = new Vector2((core.transform.position - entityModel.transform.position).magnitude, 0.5f);
+        this.transform.rotation = Quaternion.FromToRotation(Vector3.right, -core.transform.position + EntityModel.transform.position);
+        length = (core.transform.position - EntityModel.transform.position).magnitude;
+        sr.size = new Vector2(length, 0.5f);
     }
 
     void ColorSet()
     {
-        float ratio = entityModel.Hp / entityModel.MaxHp;
-        Debug.Log(ratio);
+        float ratio = EntityModel.Hp / EntityModel.MaxHp;
         Color currentColor = Color.Lerp(new Color(0, 0, 0, 1), chainColor, 1 - ratio);
         currentColor = new Color(currentColor.r, currentColor.g, currentColor.b, 1);
         sr.GetPropertyBlock(mpb);
@@ -53,12 +61,7 @@ public class CoreEntityChain : MonoBehaviour
 
     void Damage()
     {
-        entityModel.Hp -= PlayerModel.Attack.CurrentValue * Time.deltaTime;
-        if (entityModel.Hp <= 0)
-        {
-            //死亡処理
-            Destroy(this.gameObject);
-        }
+        EntityModel.Hp -= PlayerModel.Attack.CurrentValue * Time.deltaTime*(1+ (core.transform.position - EntityModel.transform.position).magnitude/core.maxr);
     }
 
     void LateUpdate()

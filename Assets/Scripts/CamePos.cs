@@ -11,10 +11,10 @@ public class CamePos : MonoBehaviour
         player = GameObject.FindObjectsByType<PlayerCore>(FindObjectsSortMode.None)[0].gameObject;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         var d = (player.transform.position - this.transform.position);
-        v = new Vector3(d.x, d.y, 0).Pow(2f) * Time.deltaTime;
+        v = new Vector3(d.x, d.y, 0).Pow(2f) * Time.fixedDeltaTime;
         this.transform.position += new Vector3(v.x, v.y, 0);
         this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, -10);
     }

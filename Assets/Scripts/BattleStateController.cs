@@ -10,5 +10,5 @@ public enum BattleWaveState
 }
 public class BattleStateController : MonoBehaviour
 {
-    BattleWaveState currentState = 0;
+    
 }

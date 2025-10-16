@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3876802568867891641}
   - component: {fileID: 7086479539924323051}
   - component: {fileID: 1972652117288172124}
+  - component: {fileID: 7852895031580419648}
   m_Layer: 0
   m_Name: chain
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1783732346967910437}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.12425, y: -0.00109, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -131,3 +132,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80b93552acd4aec48b03e7371a117007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoreEnittiyChain
+  length: 0
+  chainColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+--- !u!114 &7852895031580419648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783732346967910437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bffbfa2e56063ab4abcd549707ba3bdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChainEffect
+  effect: {fileID: 5762569135855597957, guid: e6e5180187e2b23479605fa87d759b49, type: 3}

@@ -8,4 +8,5 @@ public class Initializer : ScriptableObject
     public float IniAttack;
     public float IniStamina;
     public float IniTime;
+    public bool isTutrial;
 }

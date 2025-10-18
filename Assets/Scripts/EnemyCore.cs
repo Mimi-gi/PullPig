@@ -5,6 +5,9 @@ using UnityEngine.VFX;
 using System.Threading;
 using ListExtensions;
 using UnityEditor.Tilemaps;
+using Cysharp.Threading.Tasks;
+using LitMotion;
+using LitMotion.Extensions;
 
 public class EnemyCore : MonoBehaviour
 {
@@ -28,6 +31,10 @@ public class EnemyCore : MonoBehaviour
 
     [Header("エフェクト関連")]
     [SerializeField] GameObject toujou;
+    public GameObject eye;
+    [SerializeField] GameObject gekiha_1;
+    [SerializeField] GameObject gekiha_2;
+    [SerializeField] Sprite eye_death;
     [Header("鎖の設定")]
     [SerializeField] GameObject chainPrefab;
     void Start()
@@ -40,11 +47,11 @@ public class EnemyCore : MonoBehaviour
 
         eNum
         .Where(n => n == 0)
-        .Subscribe(_ =>
+        .Subscribe(async _ =>
         {
             onAllDeath.OnNext(Unit.Default);
             ScoreModel.INSTANCE.Score.Value += score;
-            Death();
+            await Death();
         });
         CreateItemList();
         Instantiate(toujou, this.transform.position, Quaternion.identity).GetComponent<VisualEffect>().Play();
@@ -135,8 +142,14 @@ public class EnemyCore : MonoBehaviour
         }
     }
 
-    void Death()
+    async UniTask Death()
     {
+        eye.GetComponent<SpriteRenderer>().sprite = eye_death;
+        Instantiate(gekiha_1, this.transform.position, Quaternion.identity).GetComponent<VisualEffect>().Play();
+        await LMotion.Shake.Create(this.transform.position, 0.5f * Vector3.one, 0.5f).WithCancelOnError(true).BindToPosition(this.transform).ToUniTask();
+        await UniTask.Delay(500);
+        await LMotion.Create(this.transform.localScale, Vector3.zero, 0.3f).WithEase(Ease.InBack).WithCancelOnError(true).Bind(x => this.transform.localScale = x).ToUniTask();
+        Instantiate(gekiha_2, this.transform.position, Quaternion.identity).GetComponent<VisualEffect>().Play();
         Destroy(this.gameObject);
     }
 }

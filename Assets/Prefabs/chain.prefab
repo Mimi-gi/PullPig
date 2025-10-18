@@ -132,6 +132,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80b93552acd4aec48b03e7371a117007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoreEnittiyChain
+  intensity: 0.8
+  power: 1.4
+  strictness: 1.3
   length: 0
   chainColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!114 &7852895031580419648

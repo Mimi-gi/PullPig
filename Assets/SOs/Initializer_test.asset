@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Initializer_test
   m_EditorClassIdentifier: Assembly-CSharp::Initializer
   Mode: 0
-  IniAttack: 0
-  IniStamina: 0
-  IniTime: 0
+  IniAttack: 1
+  IniStamina: 1
+  IniTime: 1
+  isTutrial: 0

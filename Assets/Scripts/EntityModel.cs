@@ -1,8 +1,10 @@
 using UnityEngine;
 using R3;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class EntityModel : MonoBehaviour
 {
+    [SerializeField] int score;
     Subject<Unit> onDeath = new Subject<Unit>();
     public Observable<Unit> OnDeath => onDeath;
     public float MaxHp;
@@ -37,7 +39,7 @@ public class EntityModel : MonoBehaviour
         if(Hp <= 0)
         {
             onDeath.OnNext(Unit.Default);
-            Debug.Log("死亡");
+            ScoreModel.INSTANCE.Score.Value += score;
             Destroy(this.gameObject);
         }
     }

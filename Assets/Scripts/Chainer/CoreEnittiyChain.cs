@@ -5,11 +5,14 @@ using Unity.IntegerTime;
 
 public class CoreEntityChain : MonoBehaviour
 {
+    [SerializeField] float intensity = 1f;
+    [SerializeField] float power = 1.5f;
+    [SerializeField] float strictness = 1.3f;
     SpriteRenderer sr;
-    public EntityModel EntityModel{get; private set;}
+    public EntityModel EntityModel { get; private set; }
     Rigidbody2D entityRb;
     EnemyCore core;
-    [HideInInspector]public float length;
+    [HideInInspector] public float length;
 
     [Header("鎖の色")]
     [SerializeField] Color chainColor = Color.yellow;
@@ -32,11 +35,12 @@ public class CoreEntityChain : MonoBehaviour
     void Force()
     {
         var del = core.transform.position - EntityModel.gameObject.transform.position;
+        var r = EntityModel.Hp / EntityModel.Hp;
         if (del.magnitude > core.maxr * 1.4f)
         {
-            entityRb.AddForce(VectorExtension.Pow(del.normalized * (del.magnitude - core.maxr*1.4f), 1.5f));
+            entityRb.AddForce(intensity * (2 - 1.5f * r) * VectorExtension.Pow(del.normalized * (del.magnitude - core.maxr * strictness), power));
         }
-        if(del.magnitude > core.maxr)
+        if (del.magnitude > core.maxr)
         {
             Damage();
         }
@@ -61,7 +65,7 @@ public class CoreEntityChain : MonoBehaviour
 
     void Damage()
     {
-        EntityModel.Hp -= PlayerModel.Attack.CurrentValue * Time.deltaTime*(1+ (core.transform.position - EntityModel.transform.position).magnitude/core.maxr);
+        EntityModel.Hp -= PlayerModel.Attack.CurrentValue * Time.deltaTime * (1 + (core.transform.position - EntityModel.transform.position).magnitude / core.maxr);
     }
 
     void LateUpdate()

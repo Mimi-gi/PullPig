@@ -39,9 +39,6 @@ public class EnemyCoreMove : MonoBehaviour
 {
     [HideInInspector]public Transform player;
     public EnemyCore Core;
-    bool pulledFlag;
-
-    [SerializeField] public GameObject eye;
     Vector3 v;
 
     [Header("長方形の領域内判定用")]
@@ -60,15 +57,23 @@ public class EnemyCoreMove : MonoBehaviour
     bool shiftFlag;
     float elapsedTime;
     float theta;
+    bool moveflag = true;
     void Start()
     {
         Core = this.GetComponent<EnemyCore>();
         player = GameObject.FindObjectsByType<PlayerModel>(FindObjectsSortMode.None)[0].transform;
         cycleTime += Random.Range(-0.1f, 0.1f);
+        Core.OnAllDeath
+        .Subscribe(_ =>
+        {
+            moveflag = false;
+        });
     }
 
     void LateUpdate()
     {
+        if (!moveflag) return;
+
         Move();
         Look();
         elapsedTime += Time.deltaTime;
@@ -122,9 +127,9 @@ public class EnemyCoreMove : MonoBehaviour
             return;
         }
         var theta = -Mathf.Abs(Mathf.Acos(v.y / v.magnitude)) * Mathf.Rad2Deg * Mathf.Sign(v.x);
-        var current = eye.transform.rotation.eulerAngles;
+        var current = Core.eye.transform.rotation.eulerAngles;
 
-        eye.transform.Rotate(0, 0, Mathf.DeltaAngle(current.z, theta) * Time.deltaTime * 5);
+        Core.eye.transform.Rotate(0, 0, Mathf.DeltaAngle(current.z, theta) * Time.deltaTime * 5);
     }
 
     void TryFlee()

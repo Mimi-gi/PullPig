@@ -225,7 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyCore
   ePrefab: {fileID: 6037297309371092208, guid: 6151d3fc6e5c7aa49a4ce2718125cb82, type: 3}
   num: 10
-  score: 0
+  score: 10
   maxr: 3
   itemPrefabs: []
   itemWeights: []

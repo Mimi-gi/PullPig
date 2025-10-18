@@ -12,6 +12,9 @@ public enum EntityState
 }
 public enum GameMode
 {
-    ScoreAttack,
-    BossRash
+    Normal,
+    Hard,
+    Hell,
+    Endless,
+    Test
 }

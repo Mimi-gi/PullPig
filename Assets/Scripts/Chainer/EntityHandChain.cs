@@ -9,6 +9,7 @@ public class EntityHandChain : MonoBehaviour
 
     [SerializeField] float intensity = 1f;
     [SerializeField] float power = 2f;
+    
     public void Set(Hand hand, EntityModel entity)
     {
         this.Hand = hand;
@@ -27,7 +28,7 @@ public class EntityHandChain : MonoBehaviour
     void OnDeath()
     {
         //演出など
-        Destroy(this.gameObject,0.2f);
+        Destroy(this.gameObject, 0.2f);
     }
 
     void Force(GameObject A, GameObject B, float power, float intensity)
@@ -35,19 +36,19 @@ public class EntityHandChain : MonoBehaviour
         if (A == null || B == null) return;
         var del = A.transform.position - B.transform.position;
 
-            var rb = B.GetComponent<Rigidbody2D>();
-            if (rb != null)
-            {
-                rb.AddForce(VectorExtension.Pow(del.normalized * (del.magnitude), power) * intensity);
-            }
-        
+        var rb = B.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.AddForce(VectorExtension.Pow(del.normalized * (del.magnitude + 0.2f), power) * intensity);
+        }
+
     }
 
     void FixedUpdate()
     {
-        if(Hand == null || Entity == null) return;
-        Force(Hand.gameObject, Entity.gameObject,  power, intensity);
-        Force(Entity.gameObject, Hand.gameObject,  power, intensity);
+        if (Hand == null || Entity == null) return;
+        Force(Hand.gameObject, Entity.gameObject, power, intensity);
+        Force(Entity.gameObject, Hand.gameObject, power, intensity);
     }
 
 

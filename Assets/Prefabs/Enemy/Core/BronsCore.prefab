@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5259059270586685567
+--- !u!1 &6715061331510209992
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6982972662523781862}
-  - component: {fileID: 3919899609174391294}
+  - component: {fileID: 4935708926434145679}
+  - component: {fileID: 7113839467652141116}
   m_Layer: 0
   m_Name: Eye
   m_TagString: Untagged
@@ -17,28 +17,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6982972662523781862
+--- !u!4 &4935708926434145679
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5259059270586685567}
+  m_GameObject: {fileID: 6715061331510209992}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 860167711180878154}
+  m_Father: {fileID: 3490084234897421601}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &3919899609174391294
+--- !u!212 &7113839467652141116
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5259059270586685567}
+  m_GameObject: {fileID: 6715061331510209992}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -90,7 +90,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &5498618295290609331
+--- !u!1 &8102781766091774438
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -98,42 +98,42 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 860167711180878154}
-  - component: {fileID: 7811670420950363332}
-  - component: {fileID: 7771113976798846701}
-  - component: {fileID: 715004117824070529}
-  - component: {fileID: 6411033383326724449}
+  - component: {fileID: 3490084234897421601}
+  - component: {fileID: 3980197361416309185}
+  - component: {fileID: 5595559326633490023}
+  - component: {fileID: 5507922365797367547}
+  - component: {fileID: 7586882705151621407}
   m_Layer: 0
-  m_Name: SampleCore
+  m_Name: BronsCore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &860167711180878154
+--- !u!4 &3490084234897421601
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5498618295290609331}
+  m_GameObject: {fileID: 8102781766091774438}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.552, y: 0.282, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6982972662523781862}
+  - {fileID: 4935708926434145679}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &7811670420950363332
+--- !u!50 &3980197361416309185
 Rigidbody2D:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5498618295290609331}
+  m_GameObject: {fileID: 8102781766091774438}
   m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -153,13 +153,13 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!212 &7771113976798846701
+--- !u!212 &5595559326633490023
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5498618295290609331}
+  m_GameObject: {fileID: 8102781766091774438}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -211,19 +211,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &715004117824070529
+--- !u!114 &5507922365797367547
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5498618295290609331}
+  m_GameObject: {fileID: 8102781766091774438}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc4e7c22df8f51042b037c56684ce491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyCore
-  ePrefab: {fileID: 6037297309371092208, guid: 6151d3fc6e5c7aa49a4ce2718125cb82, type: 3}
+  ePrefab: {fileID: 1030710813439004559, guid: 4c0121554adaba348a9816e8d6974744, type: 3}
   num: 10
   score: 10
   maxr: 3
@@ -231,25 +231,25 @@ MonoBehaviour:
   itemWeights: []
   itemNum: 0
   toujou: {fileID: 7108802156474506118, guid: c6beb1da892352c41a4d8eb0f13287db, type: 3}
-  eye: {fileID: 5259059270586685567}
+  eye: {fileID: 6715061331510209992}
   gekiha_1: {fileID: 7022064901560459438, guid: f47f517c793c42f469417d45ed52c32d, type: 3}
   gekiha_2: {fileID: 4374819434182157005, guid: aa69b05c71bf8ef49a415dacd07d8ca5, type: 3}
   eye_death: {fileID: 1669278099438933013, guid: 2db5b9ed8cebd6944b3de46389c79d38, type: 3}
-  chainPrefab: {fileID: 1783732346967910437, guid: f6f4fac009b2f4643b34669e31faee4e, type: 3}
---- !u!114 &6411033383326724449
+  chainPrefab: {fileID: 8720711070890340855, guid: 9140ce1b48d0fac469d5c1b2c45d5165, type: 3}
+--- !u!114 &7586882705151621407
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5498618295290609331}
+  m_GameObject: {fileID: 8102781766091774438}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79085fd02c341a849bc473413d058463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyCoreMove
   player: {fileID: 0}
-  Core: {fileID: 715004117824070529}
+  Core: {fileID: 5507922365797367547}
   regionWidth: 11
   regionHeight: 5.5
   minVelocity: 1

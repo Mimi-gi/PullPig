@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42b636ede79f63a4f842754cae7510d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityHandChain
-  intensity: 50
+  intensity: 40
   power: 2.4

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3527028142472486271}
   - component: {fileID: 7097489683440336690}
   - component: {fileID: 8541333781059848538}
-  - component: {fileID: 753149646870321726}
+  - component: {fileID: 5934977836271595763}
   m_Layer: 0
   m_Name: GoldGenerate_mini
   m_TagString: Untagged
@@ -118,7 +118,7 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
---- !u!114 &753149646870321726
+--- !u!114 &5934977836271595763
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,8 +127,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7022064901560459438}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 044ed538a8c34b9458221eca6a254791, type: 3}
+  m_Script: {fileID: 11500000, guid: 535f5f00c5daf804ab3ac625dd093e0c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LifeTime
+  m_EditorClassIdentifier: Assembly-CSharp::FXLifeTime
   time: 1
   timer: 0
+  delay: 2

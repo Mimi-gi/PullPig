@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3966593166586700036}
   - component: {fileID: 2235335500899504895}
   - component: {fileID: 2481167772964837881}
-  - component: {fileID: 664278948410164628}
+  - component: {fileID: 1168346626746753236}
   m_Layer: 0
   m_Name: GoldChainBreak
   m_TagString: Untagged
@@ -118,7 +118,7 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
---- !u!114 &664278948410164628
+--- !u!114 &1168346626746753236
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,8 +127,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5762569135855597957}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 044ed538a8c34b9458221eca6a254791, type: 3}
+  m_Script: {fileID: 11500000, guid: 535f5f00c5daf804ab3ac625dd093e0c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LifeTime
-  time: 1.5
+  m_EditorClassIdentifier: Assembly-CSharp::FXLifeTime
+  time: 1
   timer: 0
+  delay: 0.5

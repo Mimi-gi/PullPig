@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: 3185a2e0a74cd1049b7621d111cdcb78
+guid: 3f36c352139db9842a98017d29d1c136
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 440670855187059379
-    second: HandSkins_0
-  - first:
-      213: 8714987305526149202
-    second: HandSkins_1
-  - first:
-      213: 1658994273369289263
-    second: HandSkins_2
-  - first:
-      213: -214371733502108862
-    second: HandSkins_3
+      213: 5799530665070101550
+    second: MapTile2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -56,7 +47,7 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
-  spriteExtrude: 0
+  spriteExtrude: 32
   spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
@@ -109,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HandSkins_0
+      name: MapTile2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 48
-        height: 48
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,84 +115,26 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3b2da4adec39d1600800000000000000
-      internalID: 440670855187059379
+      spriteID: e240d73a9621c7050800000000000000
+      internalID: 5799530665070101550
       vertices: []
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: HandSkins_1
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 250cce7c7cad1f870800000000000000
-      internalID: 8714987305526149202
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HandSkins_2
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f22759c708ee50710800000000000000
-      internalID: 1658994273369289263
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HandSkins_3
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 24bd8be4b06660df0800000000000000
-      internalID: -214371733502108862
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    outline: []
+    outline:
+    - - {x: 0, y: 32}
+      - {x: -22.627417, y: 22.627417}
+      - {x: -32, y: -0.0000013987644}
+      - {x: -22.627417, y: -22.627417}
+      - {x: 0.0000027975289, y: -32}
+      - {x: 22.62742, y: -22.627413}
+      - {x: 32, y: 0.00000038159618}
+      - {x: 22.62742, y: 22.627415}
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 817c68130f527244eb7d8d70cf6f1390
-    internalID: 0
+    spriteID: 1a2d87dba67be3b42b0d96aedc0ad6d5
+    internalID: 592488280
     vertices: []
     indices: 
     edges: []
@@ -210,12 +143,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":4.0,"y":1.0},"gridSpriteSize":{"x":48.0,"y":48.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      HandSkins_0: 440670855187059379
-      HandSkins_1: 8714987305526149202
-      HandSkins_2: 1658994273369289263
-      HandSkins_3: -214371733502108862
+      MapTile2_0: 5799530665070101550
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

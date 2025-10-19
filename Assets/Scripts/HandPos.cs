@@ -54,7 +54,7 @@ public class HandPos : MonoBehaviour
     void FixedUpdate()
     {
         var goal = Player.transform.position + new Vector3(lookInput.x, lookInput.y, 0) + playerRb.linearVelocity.CastTo3()*0.15f;
-        rb.AddForce((goal - this.transform.position) * 100);
+        rb.AddForce((goal - this.transform.position) * 110);
     }
 
     void Update()

@@ -26,6 +26,7 @@ public class JetPack : MonoBehaviour
         sp = this.GetComponent<SpriteRenderer>();
         vfx.Stop();
         isdash
+        .Skip(1)
         .Where(v => v)
         .Subscribe(_ =>
         {
@@ -39,6 +40,7 @@ public class JetPack : MonoBehaviour
         });
 
         isdash
+        .Skip(1)
         .Where(v => !v)
         .Subscribe(_ =>
         {

@@ -5,4 +5,6 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] Initializer initializer;
     [SerializeField] List<EnemyList> eLists;
+
+    
 }

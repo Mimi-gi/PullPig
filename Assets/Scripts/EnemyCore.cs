@@ -144,10 +144,11 @@ public class EnemyCore : MonoBehaviour
 
     async UniTask Death()
     {
+        CancellationToken ct = this.GetCancellationTokenOnDestroy();
         eye.GetComponent<SpriteRenderer>().sprite = eye_death;
         Instantiate(gekiha_1, this.transform.position, Quaternion.identity).GetComponent<VisualEffect>().Play();
         await LMotion.Shake.Create(this.transform.position, 0.5f * Vector3.one, 0.5f).WithCancelOnError(true).BindToPosition(this.transform).ToUniTask();
-        await UniTask.Delay(500);
+        await UniTask.Delay(500, cancellationToken: ct).SuppressCancellationThrow();
         await LMotion.Create(this.transform.localScale, Vector3.zero, 0.3f).WithEase(Ease.InBack).WithCancelOnError(true).Bind(x => this.transform.localScale = x).ToUniTask();
         Instantiate(gekiha_2, this.transform.position, Quaternion.identity).GetComponent<VisualEffect>().Play();
         Destroy(this.gameObject);
